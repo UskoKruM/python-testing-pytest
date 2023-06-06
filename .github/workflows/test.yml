@@ -2,9 +2,7 @@ name: Pruebas
 
 on:
     push:
-        paths:
-            - '**.yml' # En caso de editar éste flujo de trabajo u otros
-            - '**.py' # En caso de editar código
+        paths: ['**.yml', '**.py']
 
 jobs:
     test:
@@ -17,7 +15,7 @@ jobs:
             - name: Instalar Python
               uses: actions/setup-python@v2
               with:
-                python-version: 3.8
+                python-version: 3.9
             
             - name: Instalar dependencias
               run: |
@@ -25,7 +23,7 @@ jobs:
                 pip install -r requirements.txt
             
             - name: Ejecutar pruebas
-              run: pytest --junit-xml=test-results.xml # el siguiente paso necesita los resultados en formato XML
+              run: pytest -v --junit-xml=test-results.xml # el siguiente paso necesita los resultados en formato XML
             
             - name: Mostrar resultados
               if: always()
