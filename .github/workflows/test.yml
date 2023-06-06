@@ -23,9 +23,4 @@ jobs:
                 pip install -r requirements.txt
             
             - name: Ejecutar pruebas
-              run: pytest -v --junit-xml=test-results.xml # el siguiente paso necesita los resultados en formato XML
-            
-            - name: Publicar resultados
-              uses: EnricoMi/publish-unit-test-result-action@v2.7.0
-              with:
-                files: test-results.xml
+              run: pytest -v
