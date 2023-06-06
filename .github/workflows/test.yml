@@ -25,8 +25,7 @@ jobs:
             - name: Ejecutar pruebas
               run: pytest -v --junit-xml=test-results.xml # el siguiente paso necesita los resultados en formato XML
             
-            - name: Mostrar resultados
-              if: always()
-              uses: pmeier/pytest-results-action@v0.3.0
+            - name: Publicar resultados
+              uses: EnricoMi/publish-unit-test-result-action@v2.7.0
               with:
-                path: test-results.xml
+                files: test-results.xml
